@@ -1,9 +1,11 @@
 import { useEffect, useState, useMemo } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './main-page.css';
 import Header from './header';
 
 function App() {
   const [allHouses, setAllHouses] = useState([]);
+
   useEffect(() => {
     const fetchHouses = async () => {
       const res = await fetch('/houses.json');
@@ -13,19 +15,23 @@ function App() {
     fetchHouses();
   }, []);
 
-  const featuredHouse = useMemo(() => {}, [allHouses]);
-  if (allHouses.length) {
-    const randomIndex = Math.floor(Math.random() * allHouses.length);
-    return allHouses[randomIndex];
-  }
+  const featuredHouse = useMemo(() => {
+    if (allHouses.length) {
+      const randomIndex = Math.floor(Math.random() * allHouses.length);
+      return allHouses[randomIndex];
+    }
+  }, [allHouses]);
 
   return (
-    <div className="container">
-      <Header
-        subtitle="Providing houses all over the world"
-        title="Some title"
-      />
-    </div>
+    <Router>
+      <div className="container">
+        <Header subtitle="Providing houses all over the world" />
+
+        <Switch>
+          <Route path="/"></Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
