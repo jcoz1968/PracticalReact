@@ -1,5 +1,5 @@
 import logo from './GloboLogo.png';
-import { Component } from 'react';
+// import { Component } from 'react';
 
 // class Header extends Component {
 //   render() {
