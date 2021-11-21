@@ -3,7 +3,7 @@ import './house.css';
 const House = ({ house }) => {
   return (
     <div>
-      <div className="row-mt-2">
+      <div className="row mt-2">
         <h5 className="col-md-12">{house.contry}</h5>
       </div>
       <div className="row">
